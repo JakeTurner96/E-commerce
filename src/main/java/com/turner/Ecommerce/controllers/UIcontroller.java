@@ -1,4 +1,4 @@
-package com.turner.Ecommerce;
+package com.turner.Ecommerce.controllers;
 
 import com.turner.Ecommerce.entities.Account;
 import com.turner.Ecommerce.services.AccountService;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class controller {
+public class UIcontroller {
 
     @Autowired
     private AccountService accountService;
