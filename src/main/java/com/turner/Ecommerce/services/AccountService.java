@@ -11,15 +11,15 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    public Account getAccountById(int id){
+    public Account getAccountById(int id) {
         return accountRepository.getOne(id);
     }
 
-    public void addAccount(Account account){
+    public void addAccount(Account account) {
         accountRepository.save(account);
     }
 
-    public boolean accountExistsById(int id){
+    public boolean accountExistsById(int id) {
         return accountRepository.existsById(id);
     }
 

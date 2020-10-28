@@ -1,6 +1,7 @@
 package com.turner.Ecommerce.entities;
 
 import lombok.*;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 

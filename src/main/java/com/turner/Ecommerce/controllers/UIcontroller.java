@@ -23,7 +23,7 @@ public class UIcontroller {
     }
 
     @RequestMapping("/registerAccount")
-    public String registerAccount(Account account){
+    public String registerAccount(Account account) {
         accountService.addAccount(account);
         return "redirect:/register";
     }
