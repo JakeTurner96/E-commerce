@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class productsController {
+public class ProductsController {
 
     @Autowired
     private ProductService productService;

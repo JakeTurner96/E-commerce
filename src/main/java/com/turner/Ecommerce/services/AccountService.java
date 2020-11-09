@@ -15,12 +15,12 @@ public class AccountService {
         return accountRepository.getOne(id);
     }
 
+    public Account getAccountByEmail(String email){return accountRepository.findByEmail(email);}
+
     public void addAccount(Account account) {
         accountRepository.save(account);
     }
 
-    public boolean accountExistsById(int id) {
-        return accountRepository.existsById(id);
-    }
+    public void deleteAccount(Account account){accountRepository.delete(account);}
 
 }

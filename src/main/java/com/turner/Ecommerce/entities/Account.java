@@ -1,8 +1,10 @@
 package com.turner.Ecommerce.entities;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -35,5 +37,8 @@ public class Account {
     @NonNull
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
+
+    @NotNull
+    private LocalDate accountOpened;
 
 }
