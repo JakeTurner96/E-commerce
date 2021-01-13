@@ -31,19 +31,19 @@ public class AccountDetailService implements UserDetailsService {
                 .build();
     }
 
-    private String createRoles(Account.AccountType accountType) {
-        String role;
-        switch (accountType) {
-            case PATRON:
-                role = ROLE_PATRON;
-                break;
-            case ADMIN:
-                role = ROLE_ADMIN;
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + accountType);
-        }
-        return role;
-    }
+//    private String createRoles(Account.AccountType accountType) {
+//        String role;
+//        switch (accountType) {
+//            case PATRON:
+//                role = ROLE_PATRON;
+//                break;
+//            case ADMIN:
+//                role = ROLE_ADMIN;
+//                break;
+//            default:
+//                throw new IllegalStateException("Unexpected value: " + accountType);
+//        }
+//        return role;
+//    }
 
 }

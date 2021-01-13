@@ -2,9 +2,11 @@ package com.turner.Ecommerce.entities;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,25 +20,26 @@ public class Account {
     private int id;
 
     @NonNull
+    private String email;
+
+    @NonNull
+    private String title;
+
+    @NonNull
     private String firstName;
 
     @NonNull
     private String lastName;
 
     @NonNull
-    private String email;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dob;
+
+    @NonNull
+    private long mobileNumber;
 
     @NonNull
     private String password;
-
-    public enum AccountType {
-        ADMIN,
-        PATRON
-    }
-
-    @NonNull
-    @Enumerated(EnumType.STRING)
-    private AccountType accountType;
 
     @NotNull
     private LocalDate accountOpened;

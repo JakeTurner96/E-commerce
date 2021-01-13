@@ -8,31 +8,66 @@
 <body>
 <div th:include="header"></div>
 
+<script>
+        $(document).ready(function(){
+            $('#password, #confirmPassword').on('keyup', function () {
+            if ($('#password').val() == $('#confirmPassword').val()) {
+                $('#message').html('');
+            } else
+            $('#message').html('Passwords do not match').css('color', 'red');
+            });
+        });
+</script>
+
 <div class="container ">
     <h1>Create account</h1>
     <form action="/registerAccount">
 
         <div class="form-group">
-            <div class="row">
-                <div class="col">
-                    <input name="firstName" type="text" class="form-control" placeholder="First name">
-                </div>
-                <div class="col">
-                    <input name="lastName" type="text" class="form-control" placeholder="Last name">
-                </div>
-            </div>
+            <label for="email">Email address</label>
+            <input name="email" id="email" type="email" class="form-control">
         </div>
 
         <div class="form-group">
-            <input name="email" type="email" class="form-control" placeholder="Email">
+            <label for="title">Title</label>
+            <select name="title" id="title" class="form-control">
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Ms">Ms</option>
+                <option value="Dr">Dr</option>
+            </select>
         </div>
 
         <div class="form-group">
-            <input name="password" type="password" class="form-control" placeholder="Password">
+            <label for="firstName">First name</label>
+            <input name="firstName" id="firstName" type="text" class="form-control">
         </div>
 
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Confirm password">
+            <label for="lastName">Last name</label>
+            <input name="lastName" id="lastName" type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of birth</label>
+            <input name="dob" id="dob" type="date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="mobileNumber">Mobile number</label>
+            <input name="mobileNumber" id="mobileNumber" type="tel" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input name="password" id="password" type="password" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm password</label>
+            <input type="password" id="confirmPassword" class="form-control">
+            <span id='message'></span>
         </div>
 
         <button type="submit" class="btn btn-primary">Register</button>
