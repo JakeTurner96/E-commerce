@@ -6,7 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Data
@@ -36,12 +35,11 @@ public class Account {
     private LocalDate dob;
 
     @NonNull
-    private long mobileNumber;
+    private String mobileNumber;
 
     @NonNull
     private String password;
 
     @NotNull
     private LocalDate accountOpened;
-
 }

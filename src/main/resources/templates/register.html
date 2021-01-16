@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
 </head>
 <body>
 <div th:include="header"></div>
-
 <script>
         $(document).ready(function(){
-            $('#password, #confirmPassword').on('keyup', function () {
-            if ($('#password').val() == $('#confirmPassword').val()) {
-                $('#message').html('');
-            } else
-            $('#message').html('Passwords do not match').css('color', 'red');
+            $('#password, #confirmPassword').keyup(function(){
+                if ($('#password').val() != $('#confirmPassword').val()) {
+                    $('#submitBtn').prop('disabled', true);
+                    $("#msg").html("Passwords do not match").css("color","red");
+                }else if($('#password').val() == $('#confirmPassword').val()){
+                    $('#submitBtn').prop('disabled', false);
+                    $("#msg").html("");
+                }
             });
         });
 </script>
-
 <div class="container ">
     <h1>Create account</h1>
     <form action="/registerAccount">
-
         <div class="form-group">
             <label for="email">Email address</label>
             <input name="email" id="email" type="email" class="form-control">
         </div>
-
         <div class="form-group">
             <label for="title">Title</label>
             <select name="title" id="title" class="form-control">
@@ -38,41 +36,33 @@
                 <option value="Dr">Dr</option>
             </select>
         </div>
-
         <div class="form-group">
             <label for="firstName">First name</label>
             <input name="firstName" id="firstName" type="text" class="form-control">
         </div>
-
         <div class="form-group">
             <label for="lastName">Last name</label>
             <input name="lastName" id="lastName" type="text" class="form-control">
         </div>
-
         <div class="form-group">
             <label for="dob">Date of birth</label>
             <input name="dob" id="dob" type="date" class="form-control">
         </div>
-
         <div class="form-group">
             <label for="mobileNumber">Mobile number</label>
             <input name="mobileNumber" id="mobileNumber" type="tel" class="form-control">
         </div>
-
         <div class="form-group">
             <label for="password">Password</label>
             <input name="password" id="password" type="password" class="form-control">
         </div>
-
         <div class="form-group">
             <label for="confirmPassword">Confirm password</label>
             <input type="password" id="confirmPassword" class="form-control">
-            <span id='message'></span>
+            <span id='msg'></span>
         </div>
-
-        <button type="submit" class="btn btn-primary">Register</button>
+        <input id="submitBtn" type="submit" class="btn btn-primary"/>
     </form>
 </div>
-
 </body>
 </html>

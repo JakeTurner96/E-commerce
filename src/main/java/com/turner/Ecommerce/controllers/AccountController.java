@@ -42,8 +42,27 @@ public class AccountController {
         String email = authentication.getName();
         Account account = accountService.getAccountByEmail(email);
         accountService.deleteAccount(account);
-
         return "redirect:/logout";
+    }
+
+    @RequestMapping("/updateAccount")
+    public String updateAccount(Account updatedAccount){
+        Account oldAccount = accountService.getAccountByEmail(updatedAccount.getEmail());
+
+        oldAccount.setEmail(updatedAccount.getEmail());
+        oldAccount.setFirstName(updatedAccount.getFirstName());
+        oldAccount.setLastName(updatedAccount.getLastName());
+        oldAccount.setDob(updatedAccount.getDob());
+        oldAccount.setMobileNumber(updatedAccount.getMobileNumber());
+
+        accountService.addAccount(oldAccount);
+
+        return "redirect:/myAccount";
+    }
+
+    @RequestMapping("/changePassword")
+    public String changePassword(){
+        return "changePassword";
     }
 
 }
