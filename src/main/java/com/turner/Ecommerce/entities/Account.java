@@ -31,6 +31,7 @@ public class Account {
     private String lastName;
 
     @NonNull
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
 

@@ -7,6 +7,7 @@
 <body>
 <div th:include="header"></div>
 <div class="container" align="center">
+    <p th:text="${test}"></p>
     <h1 align="center" class="display-4">Phones</h1>
     <div th:each="product : ${products}">
         <div class="card m-4" style="width: 25rem;">
