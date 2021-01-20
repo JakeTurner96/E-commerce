@@ -8,14 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
 import java.time.LocalDate;
 
 @Controller
@@ -28,17 +22,15 @@ public class AccountController {
     public String registerAccount(Account account) {
         account.setAccountOpened(LocalDate.now());
         accountService.addAccount(account);
-        return "redirect:/register";
+        return "/register";
     }
 
     @RequestMapping("/myAccount")
     public String myAccount(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-
         Account authenticatedAccount = accountService.getAccountByEmail(email);
         model.addAttribute("account", authenticatedAccount);
-
         return "myAccount";
     }
 
@@ -54,36 +46,19 @@ public class AccountController {
     @RequestMapping("/updateAccount")
     public String updateAccount(Account updatedAccount) {
         Account oldAccount = accountService.getAccountByEmail(updatedAccount.getEmail());
-
         oldAccount.setEmail(updatedAccount.getEmail());
         oldAccount.setFirstName(updatedAccount.getFirstName());
         oldAccount.setLastName(updatedAccount.getLastName());
         oldAccount.setDob(updatedAccount.getDob());
         oldAccount.setMobileNumber(updatedAccount.getMobileNumber());
-
         accountService.addAccount(oldAccount);
-
         return "redirect:/myAccount";
     }
 
     @RequestMapping("/changePassword")
-    public String changePassword(Model model) {
+    public String changePassword() {
         return "changePassword";
     }
-
-//    @RequestMapping("/updatePassword")
-//    public String updatePassword(@RequestParam("newPassword") String newPassword, @RequestParam("oldPassword") String oldPassword, Model model) {
-//        Account account = accountService.getAccountByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
-//
-//        if (account.getPassword().equals(oldPassword)) {
-//            account.setPassword(newPassword);
-//            accountService.addAccount(account);
-//            model.addAttribute("msg", "Password updated");
-//        }
-//
-//        System.out.println(model.asMap().size());
-//        return "redirect:/changePassword";
-//    }
 
     @RequestMapping("/updatePassword")
     public String updatePassword(ChangePasswordRequest changePasswordRequest, Model model) {
@@ -99,8 +74,6 @@ public class AccountController {
             msg = "Password failed to update";
         }
         model.addAttribute("msg", msg);
-        return "/changePassword";
+        return "changePassword";
     }
-
-
 }

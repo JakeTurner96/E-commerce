@@ -1,22 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>My Account</title>
-    <script>
-        function deleteAccount(){
-            $.ajax({
-                url: 'http://localhost:8080/deleteAccount',
-                success: function(){
-                    location.href ='http://localhost:8080/';
-                }
-            })
-        }
-
-        function changePassword(){
-          location.href = 'http://localhost:8080/changePassword';
-        }
-    </script>
 </head>
 <body>
 <div th:include="header"></div>
@@ -27,24 +13,32 @@
             <h3 class="card-title">Personal details</h3>
             <dl>
                 <dt>First name:</dt>
-                <dd th:text="${account.firstName}"><dd>
+                <dd th:text="${account.firstName}">
+                <dd>
                 <dt>Last name:</dt>
-                <dd th:text="${account.lastName}"><dd>
+                <dd th:text="${account.lastName}">
+                <dd>
                 <dt>Date of birth</dt>
-                <dd th:text="${account.dob}"><dd>
+                <dd th:text="${account.dob}">
+                <dd>
                 <dt>Email:</dt>
-                <dd th:text="${account.email}"><dd>
+                <dd th:text="${account.email}">
+                <dd>
                 <dt>Mobile number:</dt>
-                <dd th:text="${account.mobileNumber}"><dd>
+                <dd th:text="${account.mobileNumber}">
+                <dd>
             </dl>
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editModal">Edit account</button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete account</button>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editModal">Edit account
+            </button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete
+                account
+            </button>
         </div>
     </div>
     <div class="card mt-3">
         <div class="card-body">
             <h3 class="card-title">Security</h3>
-            <button type="button" class="btn btn-primary" onclick="changePassword()" >Change password</button>
+            <button type="button" class="btn btn-primary" onclick="changePassword()">Change password</button>
         </div>
     </div>
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -60,7 +54,8 @@
                     <form action="/updateAccount">
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input name="email" id="email" type="email" class="form-control" th:value="${account.email}">
+                            <input name="email" id="email" type="email" class="form-control"
+                                   th:value="${account.email}">
                         </div>
                         <div class="form-group">
                             <label for="title">Title</label>
@@ -74,11 +69,13 @@
                         </div>
                         <div class="form-group">
                             <label for="firstName">First name</label>
-                            <input name="firstName" id="firstName" type="text" class="form-control" th:value="${account.firstName}">
+                            <input name="firstName" id="firstName" type="text" class="form-control"
+                                   th:value="${account.firstName}">
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last name</label>
-                            <input name="lastName" id="lastName" type="text" class="form-control" th:value="${account.lastName}">
+                            <input name="lastName" id="lastName" type="text" class="form-control"
+                                   th:value="${account.lastName}">
                         </div>
                         <div class="form-group">
                             <label for="dob">Date of birth</label>
@@ -86,7 +83,8 @@
                         </div>
                         <div class="form-group">
                             <label for="mobileNumber">Mobile number</label>
-                            <input name="mobileNumber" id="mobileNumber" type="tel" class="form-control" th:value="${account.mobileNumber}">
+                            <input name="mobileNumber" id="mobileNumber" type="tel" class="form-control"
+                                   th:value="${account.mobileNumber}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="dismiss btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -118,5 +116,21 @@
         </div>
     </div>
 </div>
+<script>
+        function deleteAccount(){
+            $.ajax({
+                url: 'http://localhost:8080/deleteAccount',
+                success: function(){
+                    location.href ='http://localhost:8080/';
+                }
+            })
+        }
+
+        function changePassword(){
+          location.href = 'http://localhost:8080/changePassword';
+        }
+
+
+</script>
 </body>
 </html>

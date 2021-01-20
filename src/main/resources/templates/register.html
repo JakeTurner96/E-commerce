@@ -1,27 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
 </head>
 <body>
 <div th:include="header"></div>
-<script>
-        $(document).ready(function(){
-            $('#password, #confirmPassword').keyup(function(){
-                if ($('#password').val() != $('#confirmPassword').val()) {
-                    $('#submitBtn').prop('disabled', true);
-                    $("#msg").html("Passwords do not match").css("color","red");
-                }else if($('#password').val() == $('#confirmPassword').val()){
-                    $('#submitBtn').prop('disabled', false);
-                    $("#msg").html("");
-                }
-            });
-        });
-</script>
 <div class="container ">
     <h1>Create account</h1>
-    <form action="/registerAccount">
+    <form action="/registerAccount" method="post">
         <div class="form-group">
             <label for="email">Email address</label>
             <input name="email" id="email" type="email" class="form-control">
@@ -64,5 +51,19 @@
         <input id="submitBtn" type="submit" class="btn btn-primary"/>
     </form>
 </div>
+<script>
+        $(document).ready(function(){
+            $('#password, #confirmPassword').keyup(function(){
+                if ($('#password').val() != $('#confirmPassword').val()) {
+                    $('#submitBtn').prop('disabled', true);
+                    $("#msg").html("Passwords do not match").css("color","red");
+                }else if($('#password').val() == $('#confirmPassword').val()){
+                    $('#submitBtn').prop('disabled', false);
+                    $("#msg").html("");
+                }
+            });
+        });
+
+</script>
 </body>
 </html>

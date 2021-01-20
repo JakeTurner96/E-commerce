@@ -18,8 +18,8 @@ public class AccountDetailService implements UserDetailsService {
     @Autowired
     private AccountRepository accountRepository;
 
-    static final String ROLE_PATRON = "PATRON";
-    static final String ROLE_ADMIN = "ADMIN";
+//    static final String ROLE_PATRON = "PATRON";
+//    static final String ROLE_ADMIN = "ADMIN";
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

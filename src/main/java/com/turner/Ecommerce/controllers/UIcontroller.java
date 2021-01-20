@@ -17,7 +17,7 @@ public class UIcontroller {
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
