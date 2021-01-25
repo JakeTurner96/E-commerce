@@ -1,4 +1,5 @@
 package com.turner.Ecommerce.entities;
+
 import lombok.Data;
 
 @Data

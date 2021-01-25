@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en-GB" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
 <div th:include="header"></div>
-<div class="container">
-    <h1 align="center" class="display-4">My Account</h1>
-    <div class="card">
-        <div class="card-body">
-            <h3 class="card-title">Personal details</h3>
+<div class="main">
+    <h1 class="heading">My Account</h1>
+    <div class="content-border account-info">
+        <div class="account-info-container">
+            <h2 class="card-title">Personal details</h2>
             <dl>
                 <dt>First name:</dt>
                 <dd th:text="${account.firstName}">
@@ -28,19 +39,21 @@
                 <dd th:text="${account.mobileNumber}">
                 <dd>
             </dl>
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editModal">Edit account
+            <button class="util-btn secondary-btn" type="button" data-toggle="modal" data-target="#editModal">Edit account
             </button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete
+            <button class="util-btn warning-btn" type="button" data-toggle="modal" data-target="#exampleModal">Delete
                 account
             </button>
         </div>
     </div>
-    <div class="card mt-3">
-        <div class="card-body">
-            <h3 class="card-title">Security</h3>
-            <button type="button" class="btn btn-primary" onclick="changePassword()">Change password</button>
+
+    <div class="content-border account-info">
+        <div class="account-info-container">
+            <h2>Security</h2>
+            <button class="util-btn secondary-btn" type="button" onclick="changePassword()">Change password</button>
         </div>
     </div>
+
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -116,21 +129,7 @@
         </div>
     </div>
 </div>
-<script>
-        function deleteAccount(){
-            $.ajax({
-                url: 'http://localhost:8080/deleteAccount',
-                success: function(){
-                    location.href ='http://localhost:8080/';
-                }
-            })
-        }
-
-        function changePassword(){
-          location.href = 'http://localhost:8080/changePassword';
-        }
-
-
-</script>
+<script src="global.js"></script>
+<script src="securityUtils.js"></script>
 </body>
 </html>

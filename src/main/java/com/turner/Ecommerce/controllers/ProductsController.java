@@ -1,5 +1,6 @@
 package com.turner.Ecommerce.controllers;
 
+
 import com.turner.Ecommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,4 +18,5 @@ public class ProductsController {
         model.addAttribute("products", productService.getAllProducts());
         return "products";
     }
+
 }

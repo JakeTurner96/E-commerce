@@ -19,9 +19,15 @@ public class AccountController {
     private AccountService accountService;
 
     @RequestMapping("/registerAccount")
-    public String registerAccount(Account account) {
-        account.setAccountOpened(LocalDate.now());
-        accountService.addAccount(account);
+    public String registerAccount(Account account, Model model) {
+
+        if (!accountService.accountExists(account)) {
+            account.setAccountOpened(LocalDate.now());
+            accountService.addAccount(account);
+            model.addAttribute("successMsg", "Account created");
+        } else {
+            model.addAttribute("failureMsg", "An account with email " + account.getEmail() + " already exists");
+        }
         return "/register";
     }
 
@@ -63,17 +69,15 @@ public class AccountController {
     @RequestMapping("/updatePassword")
     public String updatePassword(ChangePasswordRequest changePasswordRequest, Model model) {
         Account account = accountService.getAccountByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
-        String msg = "";
 
         if (account.getPassword().equals(changePasswordRequest.getOldPassword())) {
             account.setPassword(changePasswordRequest.getNewPassword());
             accountService.addAccount(account);
-            msg = "Password updated";
+            model.addAttribute("successMsg", "Password updated");
 
         } else if (!account.getPassword().equals(changePasswordRequest.getOldPassword())) {
-            msg = "Password failed to update";
+            model.addAttribute("failureMsg", "Password failed to update");
         }
-        model.addAttribute("msg", msg);
         return "changePassword";
     }
 }

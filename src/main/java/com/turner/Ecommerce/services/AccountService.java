@@ -27,4 +27,12 @@ public class AccountService {
         accountRepository.delete(account);
     }
 
+    public boolean accountExists(Account account) {
+        if (accountRepository.existsByEmail(account.getEmail())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
